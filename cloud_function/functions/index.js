@@ -3,11 +3,11 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-const ApiAiApp = require('actions-on-google').ApiAiApp;
+const DialogflowApp = require('actions-on-google').DialogflowApp;
 
 exports.receiveAssistantRequests = functions.https.onRequest((request, response) => {
 
-    const app = new ApiAiApp({request: request, response: response});
+    const app = new DialogflowApp({ request: request, response: response });
 
     function handlerRequest(app) {
 
@@ -21,6 +21,5 @@ exports.receiveAssistantRequests = functions.https.onRequest((request, response)
             });
 
     }
-
     app.handleRequest(handlerRequest);
 });
