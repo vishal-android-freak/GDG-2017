@@ -17,7 +17,6 @@ exports.receiveAssistantRequests = functions.https.onRequest((request, response)
         return admin.database().ref(`/automation/${device}/value`).set(status)
             .then(snapshot => {
                 app.ask(`Ok, switching ${device} ${status}. Do you want to control anything else?`);
-                response.send(200);
             });
 
     }
